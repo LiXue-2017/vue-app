@@ -1,0 +1,56 @@
+// 一个css函数，实现在手机上1px的效果
+border-1px($color)
+  position: relative
+  // 下边框1px
+  &:after
+    display: block
+    position: absolute
+    width: 100%
+    left: 0
+    bottom: 0
+    border-top: 1px solid $color
+    content: ''
+
+border-top-1px($color)
+  position: relative
+  &:before
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    border-top: 1px solid $color
+    content: ''
+
+border-right-1px($color)
+  position: relative
+  &:after
+    display: block
+    position: absolute
+    right: 0
+    top: 0
+    height: 100%
+    border-right: 1px solid $color
+    content: ''
+
+border-left-1px($color)
+  position: relative
+  &:after
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    border-right: 1px solid $color
+    content: ''
+
+// 删除1px的底边border
+border-none()
+  &:after
+    display: none
+
+// 处理dpr分别为2和3的图片，用于媒体查询
+bg-image($url)
+  background-image: url($url + '@2x.png')
+  @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) 
+    background-image url($url + '@3x.png')
