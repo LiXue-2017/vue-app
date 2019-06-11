@@ -2,6 +2,10 @@
 let express = require('express');
 let config = require('../config/index');
 let port = process.env.PORT || config.build.port;
+// 连接的wifi网络的ipv4地址
+// let host = '172.28.53.13';
+// 手机热点的ipv4地址
+let host = '192.168.43.21';
 // 导入数据
 let appData = require('../data.json')
 let goods = appData.goods
@@ -13,58 +17,36 @@ let app = express();
 let router = express.Router();
 // 定义路由
 router.get('/', function (req, res, next) {
+  // req.url将结合express.static('./dist')指定的根目录来生成url
   req.url = '/index.html';
   next();
 });
-app.use(router);
-
-let apiRouter = express.Router();
-apiRouter.get('/api/seller', (req, res) => {
+router.get('/api/seller', (req, res) => {
   res.json({
     errno: 0,
     data: seller
   });
 });
-apiRouter.get('/api/goods', (req, res) => {
+router.get('/api/goods', (req, res) => {
   res.json({
     errno: 0,
     data: goods
   });
 });
-apiRouter.get('/api/ratings', (req, res) => {
+router.get('/api/ratings', (req, res) => {
   res.json({
     errno: 0,
     data: ratings
   });
 });
-app.use('/api', apiRouter);
+app.use(router);
+// 指定了静态资源的根目录
 app.use(express.static('./dist'));
-module.exports = app.listen(port, function (err) {
+module.exports = app.listen(port, host, function (err) {
   if (err) {
     console.log(err);
     return;
   }
-  console.log('Listend!')
+  console.log('Listening at http://' + host + ':' + port + '/?id=1234' + '\n')
 })
 
-// // express模拟后台接口
-// before(app) {
-//   app.get('/api/seller', (req, res) => {
-//     res.json({
-//       errno: 0,
-//       data: seller
-//     })
-//   }),
-//     app.get('/api/goods', (req, res) => {
-//       res.json({
-//         errno: 0,
-//         data: goods
-//       })
-//     }),
-//     app.get('/api/ratings', (req, res) => {
-//       res.json({
-//         errno: 0,
-//         data: ratings
-//       })
-//     })
-// }

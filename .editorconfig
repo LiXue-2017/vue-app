@@ -2,8 +2,12 @@ root = true
 
 [*]
 charset = utf-8
+# 缩进风格是空格
 indent_style = space
 indent_size = 2
+# 换行符风格，此处是Linux和Mac的换行符风格
 end_of_line = lf
+# 当创建文件时自动在文件末尾插入一个新行
 insert_final_newline = true
+# 自动移除行尾空格
 trim_trailing_whitespace = true
