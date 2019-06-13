@@ -18,9 +18,9 @@
   </div>
 </template>
 <script type='text/ecmascript-6'>
-import header from 'components/header/header.vue'
-import { urlParse } from 'common/js/util'
-const ERR_OK = 0
+import header from 'components/header/header.vue';
+import { urlParse } from 'common/js/util';
+const ERR_OK = 0;
 export default {
   data () {
     return {
@@ -31,7 +31,7 @@ export default {
           return queryParam.id;
         })()
       }
-    }
+    };
   },
   created () {
     this.$http.get('api/seller?id=' + this.seller.id).then((response) => {
@@ -39,12 +39,12 @@ export default {
       if (response.errno === ERR_OK) {
         this.seller = Object.assign({}, this.seller, response.data);
       }
-    }, () => { })
+    }, () => { });
   },
   components: {
     'v-header': header
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import './common/stylus/mixin.styl'
@@ -59,6 +59,8 @@ export default {
     .tab-item
       flex: 1
       text-align: center
+      &:first-child
+        border-bottom: 1px solid red
       // 以下表示父元素下的a元素
       & > a
         display: block

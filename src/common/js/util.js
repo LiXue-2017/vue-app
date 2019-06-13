@@ -16,7 +16,7 @@ export function urlParse () {
       let key = decodeURIComponent(tempArr[0]);
       let val = decodeURIComponent(tempArr[1]);
       obj[key] = val;
-    })
+    });
   }
   return obj;
 }

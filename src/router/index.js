@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 // 引入组件
-import goods from 'components/goods/goods.vue'
-import ratings from 'components/ratings/ratings'
-import seller from 'components/seller/seller'
+import goods from 'components/goods/goods.vue';
+import ratings from 'components/ratings/ratings';
+import seller from 'components/seller/seller';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 export default new VueRouter({
   routes: [
@@ -29,4 +29,4 @@ export default new VueRouter({
     }
   ],
   linkActiveClass: 'active'
-})
+});

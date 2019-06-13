@@ -1,27 +1,29 @@
 'use strict'
-const utils = require('./utils')
-const webpack = require('webpack')
-const config = require('../config')
-const merge = require('webpack-merge')
-const path = require('path')
-const baseWebpackConfig = require('./webpack.base.conf')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const portfinder = require('portfinder')
+const utils = require('./utils');
+const webpack = require('webpack');
+const config = require('../config');
+const merge = require('webpack-merge');
+const path = require('path');
+const baseWebpackConfig = require('./webpack.base.conf');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const portfinder = require('portfinder');
 // 添加express模块
-const express = require('express')
-const app = express()
-// 导入数据
-let appData = require('../data.json')
-let goods = appData.goods
-let ratings = appData.ratings
-let seller = appData.seller
+const express = require('express');
+const app = express();
+const apiRouter = express.Router();
 
-// const HOST = process.env.HOST
+// 导入数据
+let appData = require('../data.json');
+let goods = appData.goods;
+let ratings = appData.ratings;
+let seller = appData.seller;
+
+const HOST = process.env.HOST
 // 用于手机用IP地址查看项目
-const HOST = process.env.HOST || '192.168.43.21'
-const PORT = process.env.PORT && Number(process.env.PORT)
+// const HOST = process.env.HOST || '192.168.43.21';
+const PORT = process.env.PORT && Number(process.env.PORT);
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -55,24 +57,25 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },
     // express模拟后台接口
     before (app) {
-      app.get('/api/seller', (req, res) => {
+      apiRouter.get('/api/seller', (req, res) => {
         res.json({
           errno: 0,
           data: seller
         })
-      }),
-        app.get('/api/goods', (req, res) => {
-          res.json({
-            errno: 0,
-            data: goods
-          })
-        }),
-        app.get('/api/ratings', (req, res) => {
-          res.json({
-            errno: 0,
-            data: ratings
-          })
+      })
+      apiRouter.get('/api/goods', (req, res) => {
+        res.json({
+          errno: 0,
+          data: goods
         })
+      })
+      apiRouter.get('/api/ratings', (req, res) => {
+        res.json({
+          errno: 0,
+          data: ratings
+        })
+      })
+      app.use('/api', apiRouter);
     }
   },
   plugins: [

@@ -91,11 +91,11 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-import star from 'components/star/star'
-import split from 'components/split/split'
-import ratingselect from 'components/ratingselect/ratingselect'
-import BScroll from 'better-scroll'
-import { formatDate } from '../../common/js/date'
+import star from 'components/star/star';
+import split from 'components/split/split';
+import ratingselect from 'components/ratingselect/ratingselect';
+import BScroll from 'better-scroll';
+import { formatDate } from '../../common/js/date';
 
 const ERR_OK = 0;
 const ALL = 2;
@@ -119,7 +119,7 @@ export default {
         positive: '满意',
         negative: '不满意'
       }
-    }
+    };
   },
   filters: {
     formatDate (value) {
@@ -153,11 +153,11 @@ export default {
           this.scroll = new BScroll(this.$refs.ratingsWrapper, {
             click: true
           });
-        })
+        });
       }
-    })
+    });
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixin'

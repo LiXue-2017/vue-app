@@ -113,17 +113,17 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-import star from 'components/star/star'
-import split from 'components/split/split'
-import BScroll from 'better-scroll'
-import { saveToLocal, loadFromLocal } from 'common/js/store'
+import star from 'components/star/star';
+import split from 'components/split/split';
+import BScroll from 'better-scroll';
+import { saveToLocal, loadFromLocal } from 'common/js/store';
 
 export default {
   props: {
     seller: {
       type: Object,
       default () {
-        return {}
+        return {};
       }
     }
   },
@@ -133,7 +133,7 @@ export default {
         // 从缓存中读取
         return loadFromLocal(this.seller.id, 'favorite', false);
       })()
-    }
+    };
   },
   computed: {
     favoriteText () {
@@ -185,7 +185,7 @@ export default {
           } else {
             this.picScroll.refresh();
           }
-        })
+        });
       }
     },
     toggleFavorite (event) {
@@ -196,7 +196,7 @@ export default {
       saveToLocal(this.seller.id, 'favorite', this.favorite);
     }
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixin'

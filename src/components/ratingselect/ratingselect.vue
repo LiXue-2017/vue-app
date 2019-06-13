@@ -55,7 +55,7 @@ export default {
           all: '全部',
           positive: '满意',
           negative: '不满意'
-        }
+        };
       }
     }
   },
@@ -63,7 +63,7 @@ export default {
     return {
       selectedType: this.selectType,
       ifOnlyContent: this.onlyContent
-    }
+    };
   },
   computed: {
     positives () {
@@ -75,7 +75,7 @@ export default {
     negatives () {
       return this.ratings.filter((rating) => {
         return rating.rateType === NEGATIVE;
-      })
+      });
     }
   },
   methods: {
@@ -98,7 +98,7 @@ export default {
       this.$emit('update:onlyContent', this.ifOnlyContent);
     }
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixin'
