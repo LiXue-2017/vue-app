@@ -57,19 +57,19 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },
     // express模拟后台接口
     before (app) {
-      apiRouter.get('/api/seller', (req, res) => {
+      apiRouter.get('/seller', (req, res) => {
         res.json({
           errno: 0,
           data: seller
         })
       })
-      apiRouter.get('/api/goods', (req, res) => {
+      apiRouter.get('/goods', (req, res) => {
         res.json({
           errno: 0,
           data: goods
         })
       })
-      apiRouter.get('/api/ratings', (req, res) => {
+      apiRouter.get('/ratings', (req, res) => {
         res.json({
           errno: 0,
           data: ratings
