@@ -13,10 +13,10 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-const LENGTH = 5
-const CLASS_ON = 'on'
-const CLASS_HALF = 'half'
-const CLASS_OFF = 'off'
+const LENGTH = 5;
+const CLASS_ON = 'on';
+const CLASS_HALF = 'half';
+const CLASS_OFF = 'off';
 export default {
   // 从父组件传过来的参数
   props: {
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     starType () {
-      return 'star-' + this.size
+      return 'star-' + this.size;
     },
     itemClasses () {
       let result = [];
@@ -51,7 +51,7 @@ export default {
       return result;
     }
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixin.styl'

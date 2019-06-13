@@ -11,6 +11,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 // 添加express模块
 const express = require('express')
+const apiRouter = express.Router()
 const app = express()
 // 导入数据
 let appData = require('../data.json')
@@ -18,9 +19,9 @@ let goods = appData.goods
 let ratings = appData.ratings
 let seller = appData.seller
 
-// const HOST = process.env.HOST
+const HOST = process.env.HOST
 // 用于手机用IP地址查看项目
-const HOST = process.env.HOST || '192.168.43.21'
+// const HOST = process.env.HOST || '192.168.43.21'
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
@@ -31,6 +32,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devtool: config.dev.devtool,
 
   // these devServer options should be customized in /config/index.js
+  // webpack-dev-server提供了一个简单的 web 服务器，并且能够实时重新加载。
   devServer: {
     clientLogLevel: 'warning',
     historyApiFallback: {
@@ -54,25 +56,27 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     },
     // express模拟后台接口
+    // 在服务器内部执行所有其他中间件之前先执行自定义中间件,这可用于定义自定义处理程序。
     before (app) {
-      app.get('/api/seller', (req, res) => {
+      apiRouter.get('/seller', (req, res) => {
         res.json({
           errno: 0,
           data: seller
         })
-      }),
-        app.get('/api/goods', (req, res) => {
-          res.json({
-            errno: 0,
-            data: goods
-          })
-        }),
-        app.get('/api/ratings', (req, res) => {
-          res.json({
-            errno: 0,
-            data: ratings
-          })
+      })
+      apiRouter.get('/goods', (req, res) => {
+        res.json({
+          errno: 0,
+          data: goods
         })
+      })
+      apiRouter.get('/ratings', (req, res) => {
+        res.json({
+          errno: 0,
+          data: ratings
+        })
+      })
+      app.use('/api', apiRouter)
     }
   },
   plugins: [

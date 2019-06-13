@@ -90,7 +90,7 @@ import shopcart from 'components/shopcart/shopcart.vue';
 import cartcontrol from 'components/cartcontrol/cartcontrol.vue';
 import food from 'components/food/food.vue';
 import price from 'components/price/price.vue';
-const ERR_OK = 0
+const ERR_OK = 0;
 export default {
   props: {
     seller: {
@@ -107,7 +107,7 @@ export default {
       // Y轴实时的滚动位置
       scrollY: 0,
       selectedFood: {}
-    }
+    };
   },
   computed: {
     currentIndex () {
@@ -134,18 +134,19 @@ export default {
     }
   },
   created () {
-    // 用vue-resource
-    this.$http.get('api/goods').then(function (response) {
-      response = response.body;
+    // 用axios
+    this.axios.get('api/goods').then((response) => {
+      response = response.data;
+      console.log(response);
       if (response.errno === ERR_OK) {
         this.goods = response.data;
         this.$nextTick(() => {
           this._initScroll();
           // 计算滚动高度
           this._calculateHeight();
-        })
+        });
       }
-    })
+    });
     // 根据data.json文件中的seller.supports的type字段判断supports类型的class，以便supports的图标确定
     this.classMap = ['decrease', 'discount', 'special', 'ticket', 'guarantee'];
   },
@@ -162,7 +163,7 @@ export default {
       });
       // 添加滚动事件
       this.foodsScroll.on('scroll', (pos) => {
-        this.scrollY = Math.abs(Math.round(pos.y))
+        this.scrollY = Math.abs(Math.round(pos.y));
       });
     },
     _calculateHeight () {
@@ -190,7 +191,7 @@ export default {
       this.$nextTick(() => {
         // 调用子组件的方法
         this.$refs.shopcart.drop(target);
-      })
+      });
     },
     // 展开商品详情页
     selectFood (food, event) {
@@ -208,7 +209,7 @@ export default {
     food,
     price
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixin.styl'

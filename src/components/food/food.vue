@@ -115,7 +115,7 @@ export default {
         positive: '推荐',
         negative: '吐槽'
       }
-    }
+    };
   },
   methods: {
     // 供父组件调用
@@ -130,7 +130,7 @@ export default {
         if (!this.scroll) {
           this.scroll = new BScroll(this.$refs.food, {
             click: true
-          })
+          });
         } else {
           this.scroll.refresh();
         }
@@ -153,7 +153,7 @@ export default {
       this.$nextTick(() => {
         // 调用父组件的方法
         this.$parent._drop(target);
-      })
+      });
     },
     // 需要显示的商品评价
     needShow (type, text) {
@@ -179,7 +179,7 @@ export default {
     split,
     ratingselect
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixin'

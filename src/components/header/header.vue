@@ -2,7 +2,12 @@
   <div class="header">
     <div class="content-wrapper">
       <div class="avatar">
-        <img width="64" height="64" :src="seller.avatar" alt="商家头像">
+        <img
+          width="64"
+          height="64"
+          :src="seller.avatar"
+          alt="商家头像"
+        >
       </div>
       <div class="content">
         <div class="title">
@@ -10,40 +15,72 @@
           <span class="name">{{seller.name}}</span>
         </div>
         <div class="description">{{seller.description}}/{{seller.deliveryTime}}分钟送达</div>
-        <div class="supports" v-if="seller.supports">
-          <span class="icon" :class="classMap[seller.supports[0].type]"></span><span class="text">{{seller.supports[0].description}}</span>
+        <div
+          class="supports"
+          v-if="seller.supports"
+        >
+          <span
+            class="icon"
+            :class="classMap[seller.supports[0].type]"
+          ></span><span class="text">{{seller.supports[0].description}}</span>
         </div>
       </div>
-      <div class="support-count" v-if="seller.supports" @click="showDetail">
+      <div
+        class="support-count"
+        v-if="seller.supports"
+        @click="showDetail"
+      >
         <span class="count">{{seller.supports.length}}个</span><i class="icon-keyboard_arrow_right"></i>
       </div>
     </div>
-    <div class="bulletin-wrapper" @click="showDetail">
+    <div
+      class="bulletin-wrapper"
+      @click="showDetail"
+    >
       <!-- 两个span之间不留空白符 -->
       <span class="bulletin-title"></span>
       <span class="bulletin-text">{{seller.bulletin}}</span>
       <i class="icon-keyboard_arrow_right"></i>
     </div>
     <div class="background">
-      <img :src="seller.avatar" alt="header背景图">
+      <img
+        :src="seller.avatar"
+        alt="header背景图"
+      >
     </div>
     <transition name="fade">
-      <div class="detail" v-show="detailShow">
+      <div
+        class="detail"
+        v-show="detailShow"
+      >
         <!-- 内容区 -->
         <div class="detail-wrapper clearfix">
           <div class="detail-main">
             <h1 class="name">{{seller.name}}</h1>
             <div class="star-wrapper">
-              <star :size="48" :score="seller.score"></star>
+              <star
+                :size="48"
+                :score="seller.score"
+              ></star>
             </div>
             <div class="title">
               <div class="line"></div>
               <div class="text">优惠信息</div>
               <div class="line"></div>
             </div>
-            <ul class="supports" v-if="seller.supports">
-              <li class="support-item" v-for=" (item, index) in seller.supports" :key="index">
-                <span class="icon" :class="classMap[seller.supports[index].type]"></span>
+            <ul
+              class="supports"
+              v-if="seller.supports"
+            >
+              <li
+                class="support-item"
+                v-for=" (item, index) in seller.supports"
+                :key="index"
+              >
+                <span
+                  class="icon"
+                  :class="classMap[seller.supports[index].type]"
+                ></span>
                 <span class="text">{{seller.supports[index].description}}</span>
               </li>
             </ul>
@@ -58,7 +95,10 @@
           </div>
         </div>
         <!-- 底部 -->
-        <div class="detail-close" @click="hideDetail">
+        <div
+          class="detail-close"
+          @click="hideDetail"
+        >
           <i class="icon-close"></i>
         </div>
       </div>
@@ -67,7 +107,7 @@
 </template>
 <script type="text/ecmascript-6">
 // 引入star组件
-import star from 'components/star/star.vue'
+import star from 'components/star/star.vue';
 export default {
   props: {
     seller: {
@@ -81,21 +121,21 @@ export default {
   data () {
     return {
       detailShow: false
-    }
+    };
   },
   methods: {
     showDetail () {
-      this.detailShow = true
+      this.detailShow = true;
     },
     hideDetail () {
-      this.detailShow = false
+      this.detailShow = false;
     }
   },
   created () {
     // 根据data.json文件中的seller.supports的type字段判断supports类型的class，以便supports的图标确定
-    this.classMap = ['decrease', 'discount', 'special', 'ticket', 'guarantee']
+    this.classMap = ['decrease', 'discount', 'special', 'ticket', 'guarantee'];
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixin.styl'
@@ -237,7 +277,7 @@ export default {
       opacity: 0
       background: rgba(7, 17, 27, 0)
     &.fade-enter-active, &.fade-leave-active
-      transition: all .5s ease
+      transition: all 0.5s ease
     // backdrop-filter: blur(10px)只在ios上生效
     // backdrop-filter：blur(10px)
     // 包裹内容的容器

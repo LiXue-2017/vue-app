@@ -14,7 +14,7 @@ export default {
       type: Object
     }
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 .price

@@ -100,8 +100,8 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-import cartcontrol from 'components/cartcontrol/cartcontrol.vue'
-import BScroll from 'better-scroll'
+import cartcontrol from 'components/cartcontrol/cartcontrol.vue';
+import BScroll from 'better-scroll';
 export default {
   props: {
     selectFoods: {
@@ -152,7 +152,7 @@ export default {
       // 购物车详情是否折叠
       fold: true,
       listShow: false
-    }
+    };
   },
   computed: {
     totalPrice () {
@@ -290,7 +290,7 @@ export default {
     cartcontrol,
     BScroll
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../common/stylus/mixin'

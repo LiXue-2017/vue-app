@@ -18,9 +18,9 @@
   </div>
 </template>
 <script type='text/ecmascript-6'>
-import header from 'components/header/header.vue'
-import { urlParse } from 'common/js/util'
-const ERR_OK = 0
+import header from 'components/header/header.vue';
+import { urlParse } from 'common/js/util';
+const ERR_OK = 0;
 export default {
   data () {
     return {
@@ -31,20 +31,23 @@ export default {
           return queryParam.id;
         })()
       }
-    }
+    };
   },
   created () {
-    this.$http.get('api/seller?id=' + this.seller.id).then((response) => {
-      response = response.body;
+    this.axios.get('api/seller?id=').then((response) => {
+      response = response.data;
+      console.log(response);
       if (response.errno === ERR_OK) {
         this.seller = Object.assign({}, this.seller, response.data);
       }
-    }, () => { })
+    }).catch((err) => {
+      console.log(err);
+    });
   },
   components: {
     'v-header': header
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import './common/stylus/mixin.styl'
@@ -59,6 +62,8 @@ export default {
     .tab-item
       flex: 1
       text-align: center
+      &:first-child
+        z-index: 12
       // 以下表示父元素下的a元素
       & > a
         display: block
@@ -67,4 +72,5 @@ export default {
         // 在实例化路由时设置路由的linkActiveClass
         &.active
           color: rgb(240, 20, 20)
+          border-bottom: 1px solid red
 </style>

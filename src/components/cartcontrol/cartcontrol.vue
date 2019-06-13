@@ -20,7 +20,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-import Vue from 'vue'
+import Vue from 'vue';
 export default {
   props: {
     food: {
@@ -56,7 +56,7 @@ export default {
       }
     }
   }
-}
+};
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 .cartcontrol
