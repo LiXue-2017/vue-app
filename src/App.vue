@@ -36,7 +36,6 @@ export default {
   created () {
     this.axios.get('api/seller?id=').then((response) => {
       response = response.data;
-      console.log(response);
       if (response.errno === ERR_OK) {
         this.seller = Object.assign({}, this.seller, response.data);
       }

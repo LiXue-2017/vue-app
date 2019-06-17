@@ -196,28 +196,28 @@ export default {
     transition: all 0.3s linear
   &.move-enter, &.move-leave-to
     transform: translate3d(100%, 0, 0)
-  .image-header
-    position: relative
-    width: 100%
-    height: 0
-    padding-top: 100%
-    img
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-    .back
-      position: absolute
-      top: 10px
-      left: 0
-      .icon-arrow_lift
-        // 让按钮点击区域变大
-        display: block
-        padding: 10px
-        font-size: 20px
-        color: #fff
   .food-content
+    .image-header
+      position: relative
+      width: 100%
+      height: 0
+      padding-top: 100%
+      img
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+      .back
+        position: absolute
+        top: 10px
+        left: 0
+        .icon-arrow_lift
+          // 让按钮点击区域变大
+          display: block
+          padding: 10px
+          font-size: 20px
+          color: #fff
     .content
       position: relative
       padding: 18px

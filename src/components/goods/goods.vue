@@ -137,7 +137,6 @@ export default {
     // 用axios
     this.axios.get('api/goods').then((response) => {
       response = response.data;
-      console.log(response);
       if (response.errno === ERR_OK) {
         this.goods = response.data;
         this.$nextTick(() => {

@@ -145,8 +145,8 @@ export default {
     ratingselect
   },
   created () {
-    this.$http.get('/api/ratings').then((response) => {
-      response = response.body;
+    this.axios.get('/api/ratings').then((response) => {
+      response = response.data;
       if (response.errno === ERR_OK) {
         this.ratings = response.data;
         this.$nextTick(() => {
@@ -155,6 +155,8 @@ export default {
           });
         });
       }
+    }).catch((err) => {
+      console.log(err);
     });
   }
 };

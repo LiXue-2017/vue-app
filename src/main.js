@@ -10,6 +10,8 @@ import 'common/stylus/index.styl';
 // Ajax插件axios和vue-axios
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import store from './store/store';
+
 // 全局注册Ajax插件
 Vue.use(VueAxios, axios);
 
@@ -18,6 +20,7 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 });

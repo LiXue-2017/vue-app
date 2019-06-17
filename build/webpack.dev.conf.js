@@ -19,9 +19,9 @@ let goods = appData.goods
 let ratings = appData.ratings
 let seller = appData.seller
 
-const HOST = process.env.HOST
+// const HOST = process.env.HOST
 // 用于手机用IP地址查看项目
-// const HOST = process.env.HOST || '192.168.43.21'
+const HOST = process.env.HOST || '192.168.43.21'
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
