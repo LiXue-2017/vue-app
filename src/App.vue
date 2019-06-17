@@ -60,7 +60,7 @@ export default {
       flex: 1
       text-align: center
       &:first-child
-        border-bottom: 1px solid red
+        z-index: 12
       // 以下表示父元素下的a元素
       & > a
         display: block
@@ -69,4 +69,5 @@ export default {
         // 在实例化路由时设置路由的linkActiveClass
         &.active
           color: rgb(240, 20, 20)
+          border-bottom: 1px solid red
 </style>
